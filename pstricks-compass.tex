@@ -1,0 +1,124 @@
+\documentclass[a4paper]{article}
+\usepackage{pstricks}
+\usepackage{multido}
+\usepackage{vmargin}
+\SpecialCoor
+\pagestyle{empty}
+\parindent=0pt
+
+%          {left} {right} {top}  {bototm}
+\setmargrb {10mm} {10mm}  {10mm} {10mm}
+
+\newcommand{\compass}[1]{\psset{unit=#1} %% {{{
+	\begin{pspicture*}(-1,-1)(1,1)
+		% outer circle
+		\pscircle{1}
+
+		% outer circle of degrees
+		%% 1
+		\multido{\iA=0+1}{360}{\psline[linewidth=0.1pt](0.92;\iA)(1.00;\iA)}
+		%% 5
+		\multido{\iA=90+-5,\iB=0+5}{72}{\psline[linewidth=0.3pt](0.90;\iA)(1.00;\iA)}
+		%% 10
+		\multido{\iA=90+-10,\iB=0+10}{36}{\psline[linewidth=0.3pt](0.88;\iA)(1.00;\iA)}
+
+		% inner circle of degrees
+		%% 1
+		\multido{\iA=0+1}{360}{\psline[linewidth=0.1pt](0.80;\iA)(0.70;\iA)}
+		%% 5
+		\multido{\iA=90+-5,\iB=0+5}{72}{\psline[linewidth=0.3pt](0.82;\iA)(0.65;\iA)}
+		%% 10
+		\multido{\iA=90+-10,\iB=0+10}{36}{\psline[linewidth=0.3pt](0.82;\iA)(0.60;\iA)}
+
+		% degree labels 10
+		\multido{\iA=90+-10,\iB=0+10}{36}{\rput{-\iB}(0.85;\iA){\iB}}
+
+		% axis
+		\psline[linewidth=0.2pt](-1,0)(1,0)
+		\psline[linewidth=0.2pt](0,1)(0,-1)
+
+		% center circle
+		\pscircle[fillcolor=white,fillstyle=solid]{2mm}
+	\end{pspicture*}
+} %% }}}
+
+\newcommand{\compassPM}[1]{\psset{unit=#1} %% {{{
+	\begin{pspicture*}(-1,-1)(1,1)
+		% outer circle
+		\pscircle{1}
+
+		% outer circle of degrees
+		%% 1
+		\multido{\iA=90+-1}{60}{\psline[linewidth=0.1pt](0.92;\iA)(1.00;\iA)}
+		\multido{\iA=90++1}{60}{\psline[linewidth=0.1pt](0.92;\iA)(1.00;\iA)}
+		%% 5
+		\multido{\iA=90+-5,\iB=0+5}{12}{\psline[linewidth=0.3pt](0.90;\iA)(1.00;\iA)}
+		\multido{\iA=90++5,\iB=0+5}{12}{\psline[linewidth=0.3pt](0.90;\iA)(1.00;\iA)}
+		%% 10
+		\multido{\iA=90+-10,\iB=0+10}{7}{\psline[linewidth=0.3pt](0.88;\iA)(1.00;\iA)}
+		\multido{\iA=90++10,\iB=0+10}{7}{\psline[linewidth=0.3pt](0.88;\iA)(1.00;\iA)}
+
+		% inner circle of degrees
+		%% 1
+		\multido{\iA=90+-1}{60}{\psline[linewidth=0.1pt](0.80;\iA)(0.70;\iA)}
+		\multido{\iA=90++1}{60}{\psline[linewidth=0.1pt](0.80;\iA)(0.70;\iA)}
+		%% 5
+		\multido{\iA=90+-5,\iB=0+5}{12}{\psline[linewidth=0.3pt](0.82;\iA)(0.65;\iA)}
+		\multido{\iA=90++5,\iB=0+5}{12}{\psline[linewidth=0.3pt](0.82;\iA)(0.65;\iA)}
+		%% 10
+		\multido{\iA=90+-10,\iB=0+10}{7}{\psline[linewidth=0.3pt](0.82;\iA)(0.60;\iA)}
+		\multido{\iA=90++10,\iB=0+10}{7}{\psline[linewidth=0.3pt](0.82;\iA)(0.60;\iA)}
+
+		% degree labels 10
+		\multido{\iA=90+-10,\iB=0+10}{1}{\rput{-\iB}(0.85;\iA){\iB}}
+		\multido{\iA=80+-10,\iB=10+10}{6}{\rput{-\iB}(0.85;\iA){-\iB}}
+		\multido{\iA=100++10,\iB=10+10}{6}{\rput{\iB}(0.85;\iA){+\iB}}
+
+		% axis
+		\psline[linewidth=0.2pt](-1,0)(1,0)
+		\psline[linewidth=0.2pt](0,1)(0,-1)
+
+		% center circle
+		\pscircle[fillcolor=white,fillstyle=solid]{2mm}
+	\end{pspicture*}
+} %% }}}
+
+\newcommand{\compassTOP}[1]{\psset{unit=#1} %% {{{
+	\begin{pspicture*}(-1,-1)(1,1)
+		% outer circle
+		\pscircle{1}
+
+		% axis
+		\psline[linewidth=0.2pt](-1,0)(1,0)
+		\psline[linewidth=0.2pt](0,1)(0,-1)
+
+		% center circle
+		\pscircle[fillcolor=white,fillstyle=solid]{2mm}
+	\end{pspicture*}
+} %% }}}
+
+\begin{document}
+
+\compass{9.5cm} % KpK
+
+\vspace{1cm}
+
+\compassPM{7.5cm} % dev
+
+\vspace{1cm}
+
+\compassPM{5.5cm} % m
+
+\vspace{1cm}
+
+\compassPM{4.5cm} % BfW
+
+\vspace{1cm}
+
+\compassPM{3.2cm} % BfS
+
+\vspace{1cm}
+
+\compassTOP{9.5cm}
+
+\end{document}
